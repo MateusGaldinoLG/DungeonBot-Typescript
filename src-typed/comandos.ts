@@ -1,10 +1,15 @@
 import {Message} from "discord.js";
 
 import {CommandsRacas} from "./Commands/CommandsRaças"
+import {magiaCommand} from "./magias/magiasCommand";
 
 const raças = new CommandsRacas();
 
-async function ComandosHandle({author, content, channel}: Message){
+async function ComandosHandle(msg: Message){
+    let author = msg.author;
+    let content = msg.content;
+    let channel = msg.channel;
+
     if(author.bot) return;
 
     let tokens = content.split(" ");
@@ -18,6 +23,11 @@ async function ComandosHandle({author, content, channel}: Message){
             raças.sendMessage(command, channel);
         }
 
+    }
+
+    if(content.startsWith("§magia ")){
+        let joinedTokens = tokens.join('-');
+        magiaCommand(msg, joinedTokens);
     }
 }
 

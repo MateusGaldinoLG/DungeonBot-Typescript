@@ -1,9 +1,34 @@
-module.exports = function validateMessage(detailObj){
+interface classe{
+    name: string;
+    url: string;
+}
+
+interface school{
+    name: string;
+    url: string;
+}
+
+interface apiObject{
+    name: string;
+    desc: Array<string>;
+    school: school;
+    casting_time: string;
+    range: string;
+    components: Array<string>;
+    higher_level: string | undefined;
+    material: string | undefined;
+    level: number | string;
+    classes: Array<classe> | string;
+    concentration: boolean;
+    duration: string;
+}
+
+export default function validateMessage(detailObj: apiObject): void{
     if(typeof detailObj.higher_level === 'undefined'){
         detailObj.higher_level = "";
     }else{
         detailObj.higher_level = `**On Higher Levels**: ${detailObj.higher_level}`
-    } //sees if magic has higher level details
+    }//sees if magic has higher level details
 
     if(typeof detailObj.material === 'undefined'){
         detailObj.material = "";
@@ -38,4 +63,5 @@ module.exports = function validateMessage(detailObj){
     if(detailObj.concentration == true){
         detailObj.duration = `Concentration, ${detailObj.duration}`
     } //sees if the duration requires concetration
+
 }

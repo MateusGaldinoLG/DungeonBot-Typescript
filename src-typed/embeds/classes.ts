@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+import Discord from "discord.js";
 
 const artificeEmb = new Discord.MessageEmbed() 
   .setColor('#0099ff')
@@ -156,17 +156,4 @@ const patrulheiroEmb = new Discord.MessageEmbed()
     )
   .setImage('https://i2.wp.com/orbedosdragoes.com/wp-content/uploads/2018/01/DD5-Tabela-Evolucao-Patrulheiro.png')
 
-
-module.exports.artificeEmb = artificeEmb;
-module.exports.barbaroEmb = barbaroEmb;
-module.exports.bardoEmb = bardoEmb;
-module.exports.bruxoEmb = bruxoEmb;
-module.exports.clerigoEmb = clerigoEmb;
-module.exports.druidaEmb = druidaEmb;
-module.exports.feiticeiroEmb = feiticeiroEmb;
-module.exports.guerreiroEmb = guerreiroEmb;
-module.exports.ladinoEmb = ladinoEmb;
-module.exports.magoEmb = magoEmb;
-module.exports.paladinoEmb = paladinoEmb;
-module.exports.patrulheiroEmb = patrulheiroEmb;
-module.exports.mongeEmb = mongeEmb;
+export {artificeEmb, barbaroEmb, bardoEmb, bruxoEmb, clerigoEmb, druidaEmb, feiticeiroEmb, guerreiroEmb, ladinoEmb, magoEmb, paladinoEmb, patrulheiroEmb, mongeEmb}

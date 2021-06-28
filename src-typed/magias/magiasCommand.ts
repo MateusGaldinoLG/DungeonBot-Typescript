@@ -1,7 +1,10 @@
-const axios = require('axios')
-const magiaMessage = require('./magiasMessage')
+import axios from "axios";
+import { Message } from "discord.js";
+import { magiasMessage } from "./magiasMessage";
 
-module.exports = function magiaCommand(msg, tokens){
+
+
+export function magiaCommand(msg: Message, tokens: string){
     tokens = tokens.toLowerCase();
     if(tokens === ''){
         msg.channel.send('Para pesquisar uma magia é necessário digitar seu nome, para ver detalhes gerais sobre magias digite §magias (com s)')
@@ -9,15 +12,15 @@ module.exports = function magiaCommand(msg, tokens){
     else{
         pesquisarMagia(msg, tokens).then((response) => {
             if(response !== null){
-                msg.channel.send(magiaMessage(response.data))
+                msg.channel.send(magiasMessage(response.data))
             }
         });
     }
 }
 
-async function pesquisarMagia(msg, nomeMagia){
+async function pesquisarMagia(msg: Message, nomeMagia: string){
     try{
-        const response = await axios.get(`https://www.dnd5eapi.co/api/spells/${nomeMagia}`)
+        const response = await axios.get(`https://www.dnd5eapi.co/api/spells/${nomeMagia}`);
         return response;
     }catch(error){
         let status = error.response.status;
@@ -26,7 +29,7 @@ async function pesquisarMagia(msg, nomeMagia){
     }
 }
 
-function retornarErro(msg, status){
+function retornarErro(msg: Message, status: number){
     if(status == 404){
         msg.reply('O nome de magia digitado não foi encontrado, tente novamente de outra forma');
     } else{

@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+import Discord from "discord.js";
 
 const olaEmb = new Discord.MessageEmbed()
   .setColor('#0099ff')
@@ -39,8 +39,5 @@ const helpEmb = new Discord.MessageEmbed()
   {name: "Redes sociais para indicação:", value: "Instagram: @mateus_glg\n Discord: Mateus G. Overdrive#6636", inline: true},
   {name: "Comando para sugestões", value:"Se você quer comunicar sugestões diretamente, digite §sugestões/sugestoes e posteriormente sua sugestão"}
   )
-module.exports.olaEmb = olaEmb;
-module.exports.classeEmb = classeEmb;
-module.exports.racaEmb = racaEmb;
-module.exports.magiaEmb = magiaEmb;
-module.exports.helpEmb = helpEmb;
+
+export {olaEmb, classeEmb, racaEmb, magiaEmb, helpEmb};
